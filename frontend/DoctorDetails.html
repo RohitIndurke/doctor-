@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Details - Find My Doc</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <div class="logo">FIND MY DOC</div>
+      <ul>
+        <li><a href="Doctor.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Doctor Details Section -->
+  <section class="doctor-detail" id="doctorDetail"></section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Get Health Tips and Updates</h2>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Enter Your Email">
+      <button>Subscribe</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>FIND MY DOC</h3>
+        <p>Making quality healthcare accessible to everyone.</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <p>About Us</p>
+        <p>Doctors</p>
+        <p>Contact</p>
+      </div>
+      <div>
+        <h4>Popular Searches</h4>
+        <p>Cardiologist near me</p>
+        <p>Dentist near me</p>
+        <p>Dermatologist near me</p>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 FIND MY DOC | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Get doctor info from localStorage
+    const doctor = JSON.parse(localStorage.getItem('selectedDoctor'));
+
+    const container = document.getElementById('doctorDetail');
+
+    if (!doctor) {
+      container.innerHTML = "<p>No doctor data found.</p>";
+    } else {
+      container.innerHTML = `
+        <div class="doctor-profile-full">
+          <img src="${doctor.img}" alt="${doctor.name}">
+          <h2>${doctor.name}</h2>
+          <p class="specialization">${doctor.specialization}</p>
+          <p><strong>Location:</strong> ${doctor.location}</p>
+
+          <div class="appointment-box">
+            <h3>Book Appointment</h3>
+            <form onsubmit="bookAppointment(event)">
+              <input type="text" placeholder="Your Name" required>
+              <input type="email" placeholder="Your Email" required>
+              <input type="date" required>
+              <button type="submit">Book</button>
+            </form>
+          </div>
+
+          <div class="about">
+            <h3>About</h3>
+            <p>${doctor.about || "Experienced specialist providing personalized healthcare and treatment."}</p>
+          </div>
+
+          <div class="services">
+            <h3>Services</h3>
+            <div class="service-columns">
+              <div>
+                <h4>Conditions Treated</h4>
+                <ul>
+                  <li>Skin Allergy</li>
+                  <li>Acne</li>
+                  <li>Hair Loss</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Procedures Offered</h4>
+                <ul>
+                  <li>Laser Treatment</li>
+                  <li>Chemical Peeling</li>
+                  <li>Consultation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="education">
+            <h3>Education & Experience</h3>
+            <div class="edu-columns">
+              <div>
+                <h4>Education</h4>
+                <p>MBBS, MD (Dermatology)</p>
+                <p>AIIMS Delhi</p>
+              </div>
+              <div>
+                <h4>Experience</h4>
+                <p>8+ Years</p>
+                <p>Worked with Apollo Hospitals</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="memberships">
+            <h3>Memberships & Certifications</h3>
+            <ul>
+              <li>Indian Association of Dermatologists</li>
+              <li>Cosmetic Surgeons Association</li>
+              <li>Certified Laser Therapist</li>
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function bookAppointment(e) {
+      e.preventDefault();
+      alert("Appointment booked successfully!");
+    }
+  </script>
+
+</body>
+</html>

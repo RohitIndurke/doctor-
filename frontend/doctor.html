@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find My Doc - Experts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">FIND MY DOC</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Doctors</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Meet Our Medical Experts</h2>
+  </section>
+
+  <section class="experts" id="experts"></section>
+
+  <footer>
+    <p>© 2025 FIND MY DOC | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Example doctors data (this will come from API or MongoDB later)
+    const doctors = [
+      {
+        id: 1,
+        name: "Dr. Anjali Desai",
+        specialization: "MBBS MD (Dermatologist)",
+        experience: 18,
+        location: "Pune",
+        img: "https://randomuser.me/api/portraits/women/44.jpg",
+        about: "Expert in skin and cosmetic dermatology with over 8 years of experience.",
+        rate:"4.8/5 (112 Patient Reviews)"
+      },
+      {
+        id: 2,
+        name: "Dr. Rohan Kulkarni",
+        specialization: "Cardiologist",
+        experience: 10,
+        location: "Mumbai",
+        img: "https://randomuser.me/api/portraits/men/47.jpg",
+        about: "Specialist in heart diseases and preventive cardiology.",
+         rate:"4.8/5 (112 Patient Reviews)"
+      },
+      {
+        id: 3,
+        name: "Dr. Meera Patil",
+        specialization: "Neurologist",
+        experience: 12,
+        location: "Delhi",
+        img: "https://randomuser.me/api/portraits/women/55.jpg",
+        about: "Treats neurological disorders with modern techniques.",
+         rate:"4.8/5 (112 Patient Reviews)"
+      },{
+        id: 4,
+        name: "Dr. Anjali Desai",
+        specialization: "Dermatologist",
+        experience: 8,
+        location: "Pune",
+        img: "https://randomuser.me/api/portraits/women/44.jpg",
+        about: "Expert in skin and cosmetic dermatology with over 8 years of experience.",
+         rate:"4.8/5 (112 Patient Reviews)"
+      },
+      {
+        id: 5,
+        name: "Dr. Rohan Kulkarni",
+        specialization: "Cardiologist",
+        experience: 10,
+        location: "Mumbai",
+        img: "https://randomuser.me/api/portraits/men/47.jpg",
+        about: "Specialist in heart diseases and preventive cardiology.",
+         rate:"4.8/5 (112 Patient Reviews)"
+      },
+      {
+        id: 6,
+        name: "Dr. Meera Patil",
+        specialization: "Neurologist",
+        experience: 12,
+        location: "Delhi",
+        img: "https://randomuser.me/api/portraits/women/55.jpg",
+        about: "Treats neurological disorders with modern techniques.",
+         rate:"4.8/5 (112 Patient Reviews)"
+      }
+    ];
+
+    const expertsContainer = document.getElementById('experts');
+
+    doctors.forEach(doc => {
+      expertsContainer.innerHTML += `
+        <div class="doctor-card">
+          <img src="${doc.img}" alt="${doc.name}">
+          <h3>${doc.name}</h3>
+          
+          <p>${doc.specialization}</p>
+          <p>Experience :${doc.experience}</p>
+          <p>${doc.rate}</p>
+          <button onclick="viewDoctor(${doc.id})">Learn More</button>
+        </div>
+      `;
+    });
+
+    // Store data to localStorage to access on second page
+    function viewDoctor(id) {
+      const doctor = doctors.find(d => d.id === id);
+      localStorage.setItem('selectedDoctor', JSON.stringify(doctor));
+      window.location.href = 'DoctorDetails.html';
+    }
+  </script>
+
+</body>
+</html>
