@@ -20,7 +20,7 @@ Coming Soon — Deploy on [Render](https://render.com) or [Railway](https://rail
 ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white)
 
 ---
-
+```bash
 ## 📂 Folder Structure
 doctor-backend/
 │
@@ -38,7 +38,7 @@ doctor-backend/
 ├── package.json
 └── README.md
 
-
+```
 ---
 
 ## ⚙️ Getting Started  
