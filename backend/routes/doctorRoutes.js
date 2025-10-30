@@ -46,6 +46,16 @@ router.get("/specialist/:specialist", async (req, res) => {
   }
 });
 
-
+// Get doctors by branch
+router.get("/branch/:branch", async (req, res) => {
+  try {
+    const doctors = await Doctor.find({ branch: req.params.branch });
+    if (doctors.length === 0)
+      return res.status(404).json({ message: "No doctors found in this branch" });
+    res.json(doctors);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 export default router;
