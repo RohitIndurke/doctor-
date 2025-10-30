@@ -14,9 +14,20 @@ router.get("/", async (req, res) => {
 });
 
 // Get doctor by ID
-router.get("/:id", async (req, res) => {
+router.get("/id/:id", async (req, res) => {
   try {
     const doctor = await Doctor.findById(req.params.id);
+    if (!doctor) return res.status(404).json({ message: "Doctor not found" });
+    res.json(doctor);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get doctor by name
+router.get("/name/:name", async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({ name: req.params.name });
     if (!doctor) return res.status(404).json({ message: "Doctor not found" });
     res.json(doctor);
   } catch (err) {
