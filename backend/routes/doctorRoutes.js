@@ -34,5 +34,18 @@ router.get("/name/:name", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+// Get doctors by specialization
+router.get("/specialist/:specialist", async (req, res) => {
+  try {
+    const doctors = await Doctor.find({ specialist: req.params.specialist });
+    if (doctors.length === 0)
+      return res.status(404).json({ message: "No doctors found with this specialization" });
+    res.json(doctors);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 
 export default router;
